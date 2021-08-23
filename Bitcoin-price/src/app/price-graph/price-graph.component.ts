@@ -7,22 +7,37 @@ import { BitcoinService } from '../bitcoin.service';
 @Component({
   selector: 'app-price-graph',
   templateUrl: './price-graph.component.html',
-  styleUrls: ['./price-graph.component.scss']
+  styleUrls: ['./price-graph.component.scss'],
 })
 export class PriceGraphComponent implements OnInit {
+  constructor(private service: BitcoinService) {}
 
-  constructor(private service: BitcoinService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   public range = new FormGroup({
     start: new FormControl(),
     end: new FormControl(),
   });
-  
-  lineChartData: ChartDataSets[] = [{ data: [88, 78, 20, 50], label: 'Bitcoin price in $' }];
+  getBitcoinData() {
+    let startDate = this.range.get('start')?.value.format('YYYY-MM-DD');
+    let endDate = this.range.get('end')?.value.format('YYYY-MM-DD');
+    this.service.getBitcoinData(startDate, endDate).subscribe(
+      (res) => {
+        if (res.bpi) {
+          this.lineChartLabels = Object.keys(res.bpi);
+          this.lineChartData[0].data = Object.keys(res.bpi).map(
+            (k) => res.bpi[k]
+          );
+          console.log(this.lineChartData[0].data);
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  lineChartData: ChartDataSets[] = [{ data: [], label: 'Bitcoin price in $' }];
 
-  lineChartLabels: Label[] = ["2019-08-10", "2019-08-15", "2019-09-10", "2019-09-10"];
+  lineChartLabels: Label[] = [];
 
   lineChartOptions = {
     responsive: true,
