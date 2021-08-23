@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { MomentDateModule } from '@angular/material-moment-adapter';
+import { MAT_DATE_FORMATS} from '@angular/material/core';
+import { MY_DATE_FORMATS } from './myDateFormat';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +35,7 @@ import { PriceGraphComponent } from './price-graph/price-graph.component';
     HttpClientModule,
     MomentDateModule
   ],
-  providers: [],
+  providers: [{  provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
