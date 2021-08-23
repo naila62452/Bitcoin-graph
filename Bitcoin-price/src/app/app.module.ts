@@ -7,6 +7,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
+import { MomentDateModule } from '@angular/material-moment-adapter';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,8 @@ import { PriceGraphComponent } from './price-graph/price-graph.component';
     MatNativeDateModule,
     MatButtonModule,
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    MomentDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
