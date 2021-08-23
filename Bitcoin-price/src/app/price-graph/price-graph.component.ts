@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-price-graph',
@@ -11,5 +12,8 @@ export class PriceGraphComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  public range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
 }
