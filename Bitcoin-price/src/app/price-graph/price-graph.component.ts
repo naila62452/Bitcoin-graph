@@ -27,7 +27,6 @@ export class PriceGraphComponent implements OnInit {
           this.lineChartData[0].data = Object.keys(res.bpi).map(
             (k) => res.bpi[k]
           );
-          console.log(this.lineChartData[0].data);
         }
       },
       (err) => {
