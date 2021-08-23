@@ -5,6 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ import { PriceGraphComponent } from './price-graph/price-graph.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
